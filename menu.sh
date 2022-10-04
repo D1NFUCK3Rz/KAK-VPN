@@ -2850,4 +2850,3 @@ SMILE
 	chekmenu
 	echo -e "\033[1;35m"
 
-fi
