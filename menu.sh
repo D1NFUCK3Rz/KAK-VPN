@@ -3,21 +3,6 @@
 if [[ "$IP" = "" ]]; then
     IP=$(hostname -I | sed -n '1p' | awk '{print $1}')
 fi
-#ลบผู้ใช้ที่หมดอายุ
-datahoje=$(date -d "-0 days" +"%Y-%m-%d")
-datahoje=$(date '+%s' -d"$datahoje")
-for user in $(cat /etc/passwd | grep -v "nobody" | awk -F : '$3 > 900 {print $1}'); do
-	dataexp=$(chage -l $user | grep "Account expires" | awk -F : '{print $2}')
-	if [[ $dataexp == ' never' ]]; then
-		id >/dev/null 2>/dev/null
-	else
-		dataexpn=$(date -d"$dataexp" '+%d/%m/%Y')
-		dataexpnum=$(date '+%s' -d"$dataexp")
-	fi
-	if [[ $dataexpnum < $datahoje ]]; then
-		userdel $user
-	fi
-done
 # Functions
 	ok() {
 		echo -e '\e[32m'$1'\e[m'
@@ -111,7 +96,7 @@ done
 "
 				exit
 			elif [[ "$smile" = "1" ]]; then
-				cat >/home/vps/public_html/file/$username-$password.ovpn <<-PHONE
+				cat >/home/vps/public_html/$username-$password.ovpn <<-PHONE
 					<auth-user-pass>
 					$username
 					$password
@@ -122,7 +107,7 @@ done
 					</ca>
 				PHONE
 			elif [[ "$smile" = "2" ]]; then
-				cat >/home/vps/public_html/file/$username-$password.ovpn <<-COM
+				cat >/home/vps/public_html/$username-$password.ovpn <<-COM
 					auth-user-pass
 					$(cat /etc/openvpn/$sim.ovpn)
 					<ca>
@@ -141,9 +126,9 @@ done
         ┣ หมดอายุ  : $Today      
         ┣━━━━━━━━━━━━━━━━━━━━━━━━━╯ 
         ┣ ดาวน์โหลดไฟล์ Openvpn ⬇️⬇️
-        ┣ http://$IP/file/$username-$password.ovpn
+        ┣ http://$IP/$username-$password.ovpn
         ┣━━━━━━━━━━━━━━━━━━━━━━━━━
-        ╰━━┫ http://line.me/ti/p/dOTyCY5JZy    
+        ╰━━┫ เสี่ยอาท  
 "
 
 		fi
@@ -182,12 +167,12 @@ done
 		echo -e "Pass : $Passwd"
 		echo "        ========Download========"
 		echo "     "
-		echo " http://$IP/file/$Login.ovpn"
+		echo " http://$IP/$Login.ovpn"
 		echo -e "******************************"
-		echo -e "Line http://line.me/ti/p/dOTyCY5JZy
+		echo -e "เสี่ยอาท
 
 "
-		cat >/home/vps/public_html/file/$Login.ovpn <<-END
+		cat >/home/vps/public_html/$Login.ovpn <<-END
 			<auth-user-pass>
 			$Login
 			$Passwd
@@ -341,9 +326,9 @@ done
 		cr
 		echo "
 =============================================
- credit   : Dev By Sakariya misayalong 
- Facebook : https://www.facebook.com/kariya00 
- Line     : http://line.me/ti/p/dOTyCY5JZy 
+ credit   : Dev By แงะคนดีคนเดิม
+ Facebook : https://www.facebook.com/ 
+ Line     : ควย
  ============================================="
 		echo -e "         \033[1;33mRemover Usuarios Expirados\033[0m"
 		datahoje=$(date +%s)
@@ -381,9 +366,9 @@ done
 		cr
 		echo -e "\033[1;32m
 ====================================================
- credit   : Dev By Sakariya misayalong 
- Facebook : https://www.facebook.com/kariya00 
- Line     : http://line.me/ti/p/dOTyCY5JZy 
+ credit   : Dev By แงะคนดีคนเดิม
+ Facebook : https://www.facebook.com/ 
+ Line     : ควย
 ===================================================="
 		echo -e "\033[1;36m"
 		echo "---------------------------------------------"
@@ -2853,3 +2838,4 @@ SMILE
 	chekmenu
 	echo -e "\033[1;35m"
 
+fi
