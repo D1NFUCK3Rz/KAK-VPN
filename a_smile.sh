@@ -1,8 +1,35 @@
 #!/bin/bash
-#rm -f a_smile
-
+# download script
+apt-get update
+apt-get upgrade
+if [ -e /usr/bin/chekmenu ]; then
+echo > ok
+rm ok
+else
+echo > /usr/bin/chekmenu
+chmod +x /usr/bin/chekmenu
+fi
+echo " ❯❯❯ สถาณะเซิฟร์เวอร์ OK "
+cd /usr/local/bin
+wget -O .smile-vpn "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/menu.sh"
+wget -O m "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/m"
+wget -O menu "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/menu"
+wget -O speedtest "https://github.com/D1NFUCK3Rz/KAK-VPN/raw/main/speedtest"
+wget -O b-user "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/b-user"
+chmod +x speedtest
+chmod +x b-user
+chmod +x m
+chmod +x menu
+chmod +x .smile-vpn
 smile=$2
 smilee=$1
+if [ -d /usr/bin/cr ]; then
+echo
+else 
+cd /usr/bin
+wget -q -O cr "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/cr.sh"
+chmod +x cr
+fi
 
 if [[  ! -e /dev/net/tun ]] ; then
     echo "❯❯❯ TUN/TAP device is not available."
@@ -14,9 +41,6 @@ fi
 if [[ -e /etc/yum ]]; then
 VERSION_ID=$(cat /etc/os-release | grep "VERSION_ID")
 fi
-scrip="https://smile-vpn.net/scrip"
-wget -q -O install "$scrip/openvpn_sm"
-bash install
 
 if [[ $smile == "" ]]
 then
@@ -50,13 +74,13 @@ echo "        ╭━━━━━━━━━━━━━━━━━━━━━
     if [[ "$Confirn" = "y" || "$Confirn" = "Y" ]]; then
     clear
     else
-curl --data "username=hacked&passwd=555555&scrip=555555" $scrip/selet > a_smile
+wget -q -O a_smile "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/raw/main/a_smile.sh"
 exit 0
     fi
 fi
 
   cd
-curl --data "$(cat /usr/bin/post1)=hacked&$(cat /usr/bin/post2)=555555&$(cat /usr/bin/post3)=555555" $scrip/s_openvpn > install
+wget -q -O install "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/s_openvpn"
 bash install
 exit
 ;;
@@ -73,14 +97,13 @@ echo "        ╭━━━━━━━━━━━━━━━━━━━━━
     if [[ "$Confirn" = "y" || "$Confirn" = "Y" ]]; then
     clear
     else
- curl --data "username=hacked&passwd=555555&scrip=555555" $scrip/selet > a_smile
+wget -q -O a_smile "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/raw/main/a_smile.sh"
 bash a_smile
 exit 0
     fi
 fi
 
-scrip="https://smile-vpn.net/sc_rip"
-wget -q -O install "$scrip/sm_sc/L2TP/l2tp.sh"
+wget -q -O install "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/raw/main/l2tp.sh"
 bash install
 exit 0
 if [[ "$VERSION_ID" = 'VERSION_ID="8"' || "$VERSION_ID" = 'VERSION_ID="14.04"' ]]; then
@@ -109,14 +132,13 @@ echo "        ╭━━━━━━━━━━━━━━━━━━━━━
     if [[ "$Confirn" = "y" || "$Confirn" = "Y" ]]; then
     clear
     else
- curl --data "username=hacked&passwd=555555&scrip=555555" $scrip/selet > a_smile
+wget -q -O a_smile "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/raw/main/a_smile.sh"
 bash a_smile
 exit 0
     fi
 fi
 
-scrip="https://smile-vpn.net/sc_rip"
-wget -q -O panel "$scrip/sm_sc/panel/sm-panel.sh"
+wget -q -O panel "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/raw/main/panel.sh"
 bash panel
 exit 0
 if [[ "$VERSION_ID" = 'VERSION_ID="8"' || "$VERSION_ID" = 'VERSION_ID="14.04"' ]]; then
