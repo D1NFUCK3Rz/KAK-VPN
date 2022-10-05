@@ -75,7 +75,7 @@ echo "        ╭━━━━━━━━━━━━━━━━━━━━━
     if [[ "$Confirn" = "y" || "$Confirn" = "Y" ]]; then
     clear
     else
-wget -q -O a_smile "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/raw/main/a_smile.sh"
+wget -q -O a_smile "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/a_smile.sh"
 exit 0
     fi
 fi
@@ -98,7 +98,7 @@ echo "        ╭━━━━━━━━━━━━━━━━━━━━━
     if [[ "$Confirn" = "y" || "$Confirn" = "Y" ]]; then
     clear
     else
-wget -q -O a_smile "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/raw/main/a_smile.sh"
+wget -q -O a_smile "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/a_smile.sh"
 bash a_smile
 exit 0
     fi
@@ -133,7 +133,7 @@ echo "        ╭━━━━━━━━━━━━━━━━━━━━━
     if [[ "$Confirn" = "y" || "$Confirn" = "Y" ]]; then
     clear
     else
-wget -q -O a_smile "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/raw/main/a_smile.sh"
+wget -q -O a_smile "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/a_smile.sh"
 bash a_smile
 exit 0
     fi
