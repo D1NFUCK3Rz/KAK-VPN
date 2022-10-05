@@ -23,7 +23,7 @@ echo -e "\e[31m    ┣┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈�
     sleep 0.01
 echo -e "\e[32m    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫          "
     sleep 0.01
-echo -e "\e[33m    ┣━━┫   Scrip Mod By Sakariya Misayalong          "
+echo -e "\e[33m    ┣━━┫   Scrip Mod By KUY VPN ควยไรมึง         "
     sleep 0.01
 echo -e "\e[34m    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫               "
 echo -e "\e[35m    ╰━━━━━━━━━━━━━┫ Server IP $IP    "
