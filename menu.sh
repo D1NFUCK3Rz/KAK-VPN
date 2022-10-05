@@ -1,5 +1,8 @@
 #!/bin/bash
 #IP
+if [[ "$IP" = "" ]]; then
+    IP=$(hostname -I | sed -n '1p' | awk '{print $1}')
+fi
 #ลบผู้ใช้ที่หมดอายุ
 datahoje=$(date -d "-0 days" +"%Y-%m-%d")
 datahoje=$(date '+%s' -d"$datahoje")
