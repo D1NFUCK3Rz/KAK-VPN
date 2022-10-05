@@ -1,4 +1,5 @@
 #!/bin/bash
+rm install a_smile
 # download script
 apt-get update
 apt-get upgrade
@@ -56,7 +57,7 @@ echo "    ┣ 1. OpenVPN        "
 echo "    ┣ 2. L2TP Debian8 & Ubuntu14.4     "
 echo "    ┣ 3. WebPanel Debian8 & Ubuntu14.4       "
 echo "    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯"
-read -p "    ╰━━ Namber : " opcao
+read -p "    ╰━━ Number : " opcao
 else
 opcao=$smile
 fi
