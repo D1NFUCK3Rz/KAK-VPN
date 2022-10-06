@@ -2703,18 +2703,18 @@ SMILE
 	up)
 		cd /usr/local/bin
 		wget https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/menu.sh
-		#if [[ -e /usr/local/bin/menu.sh ]]; then
+		if [[ -e /usr/local/bin/menu.sh ]]; then
 			mv menu.sh .smile-vpn
 			chmod +x .smile-vpn
 			.smile-vpn
-		#else
+		else
 			clear
 			cr
 			echo "        ╭━━━━━━━━━━━━━╮ 
-        ┣  อัพเดต MENU เรียบร้อย
+        ┣  ไม่สามารถอัปเดตได้
         ╰━━━━━━━━━━━━━╯     
    "
-		#fi
+		fi
 		exit 0
 		;;
 
@@ -2725,115 +2725,114 @@ SMILE
 	echo ""
 
 	sleep 0.01
-	echo -e "\033[1;31m { m 01 } เพิ่มผู้ใช้ บัญชี ssh-vpn "
+	echo -e "\033[1;31m { m 01 } เพิ่มผู้ใช้ บัญชี ssh-vpn " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;32m { m 02 } สร้างบัญชีทดลอง ถึ่งเที่ยงคืน "
+	echo -e "\033[1;32m { m 02 } สร้างบัญชีทดลอง ถึ่งเที่ยงคืน " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;33m { m 03 } เปลียนชื่อผู้ใช้และรหัสผ่าน "
+	echo -e "\033[1;33m { m 03 } เปลียนชื่อผู้ใช้และรหัสผ่าน " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;34m { m 04 } แก้ไข วันหมดอายุ "
+	echo -e "\033[1;34m { m 04 } แก้ไข วันหมดอายุ " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;35m { m 05 } ลบผู้ใช้บัญชี ssh-vpn "
+	echo -e "\033[1;35m { m 05 } ลบผู้ใช้บัญชี ssh-vpn " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;36m { m 06 } ลบบัญชีที่หมดอายุ อัตโนมัต "
+	echo -e "\033[1;36m { m 06 } ลบบัญชีที่หมดอายุ อัตโนมัต " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;31m { m 07 } ดูบัญชีผู้ใช้ทั้งหมด และบัญชีที่ออนไลน์อยู่ "
+	echo -e "\033[1;31m { m 07 } ดูบัญชีผู้ใช้ทั้งหมด และบัญชีที่ออนไลน์อยู่ " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;32m { m 08 } รีสตาร์ต , dropbear, OpenVpn, SSH, Squid "
+	echo -e "\033[1;32m { m 08 } รีสตาร์ต , dropbear, OpenVpn, SSH, Squid " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;33m { m 09 } เทสความเร็ว  VPS "
+	echo -e "\033[1;33m { m 09 } เทสความเร็ว  VPS " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;34m { m 10 } เช็ดแบนวิทที่ใช้งานทั้งหมดวันนี้ "
+	echo -e "\033[1;34m { m 10 } เช็ดแบนวิทที่ใช้งานทั้งหมดวันนี้ " | lolcat
+	sleep 0.01
+	echo -e "\033[1;35m { m 11 } รายละเอียดการใช้งาน " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;35m { m 11 } รายละเอียดการใช้งาน "
+	echo -e "\033[1;36m { m 12 } ตรวจสอบระบบ " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;36m { m 12 } ตรวจสอบระบบ "
+	echo -e "\033[1;31m { m 13 } ล็อกผู้ใช้ " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;31m { m 13 } ล็อกผู้ใช้ "
+	echo -e "\033[1;32m { m 14 } ปลดล็อก " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;32m { m 14 } ปลดล็อก "
+	echo -e "\033[1;33m { m 15 } ตั้งค่าเวลารีบูตอัตโนมัต " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;33m { m 15 } ตั้งค่าเวลารีบูตอัตโนมัต "
+	echo -e "\033[1;34m { m 16 } แบคอับ และ รีสโตร์ ผู้ใช้งาน " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;34m { m 16 } แบคอับ และ รีสโตร์ ผู้ใช้งาน "
+	echo -e "\033[1;35m { m 17 } แก้เซิฟร์เวอร์ให้ชื่อเป็น root  " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;35m { m 17 } แก้เซิฟร์เวอร์ให้ชื่อเป็น root  "
+	echo -e "\033[1;36m { m 18 } เช็ดการใช้งานแบนวิท " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;36m { m 18 } เช็ดการใช้งานแบนวิท "
+	echo -e "\033[1;31m { m 19 } ลบผู้ใช้ทั้งหมด " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;31m { m 19 } ลบผู้ใช้ทั้งหมด "
+	echo -e "\033[1;32m { m 20 } ดูผู้ใช้ที่หมดอายุ " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;32m { m 20 } ดูผู้ใช้ที่หมดอายุ "
+	echo -e "\033[1;33m { m 21 } ดาวน์โหลด config ovpn " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;33m { m 21 } ดาวน์โหลด config ovpn "
+	echo -e "\033[1;34m { m 22 } จำกัดความเร็ว " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;34m { m 22 } จำกัดความเร็ว "
+	echo -e "\033[1;34m { m 23 } เช็ดแบนวิทแต่ละ user ที่ใช้งาน " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;34m { m 23 } เช็ดแบนวิทแต่ละ user ที่ใช้งาน "
+	echo -e "\033[1;35m { m 24 } ลิ้งต่างๆ " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;35m { m 24 } ลิ้งต่างๆ "
+	echo -e "\033[1;36m { m 25 } จัดการระบบ pptp  " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;36m { m 25 } จัดการระบบ pptp  "
+	echo -e "\033[1;31m { m 26 } เช็ดวันหมดอายุค้นหาด้วยชื่อ  " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;31m { m 26 } เช็ดวันหมดอายุค้นหาด้วยชื่อ  "
+	echo -e "\033[1;32m { m 27 } แก้ไขโฮสไฟล์ ovpn  " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;32m { m 27 } แก้ไขโฮสไฟล์ ovpn  "
+	echo -e "\033[1;33m { m 28 } จัดการตั้งค่าพร็อกซี่  " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;33m { m 28 } จัดการตั้งค่าพร็อกซี่  "
+	echo -e "\033[1;34m { m 29 } ตั้งค่าพอร์ต Openvpn  " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;34m { m 29 } ตั้งค่าพอร์ต Openvpn  "
+	echo -e "\033[1;35m { m 30 } ตั้งค่าโปรโตคอล Openvpn  " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;35m { m 30 } ตั้งค่าโปรโตคอล Openvpn  "
+	echo -e "\033[1;36m { m 31 } เปิดปิดใช้งาน Openvpn เชื่อมได้ไม่จำกัดเครื่อง  " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;36m { m 31 } เปิดปิดใช้งาน Openvpn เชื่อมได้ไม่จำกัดเครื่อง  "
+	echo -e "\033[1;31m { m 32 } ติดตั้ง OCS_Panel   " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;31m { m 32 } ติดตั้ง OCS_Panel   "
+	echo -e "\033[1;32m { m 33 } เช็ดผู้ใช้งาน SSH   " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;32m { m 33 } เช็ดผู้ใช้งาน SSH   "
+	echo -e "\033[1;32m { m 34 } เพิ่มพอต Openvpn   " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;32m { m 34 } เพิ่มพอต Openvpn   "
+	echo -e "\033[1;33m { m renew } เช็ควันหมดอายุ ต่ออายุ เติมเครดิต  " | lolcat
 
 	sleep 0.01
-	echo -e "\033[1;33m { m renew } เช็ควันหมดอายุ ต่ออายุ เติมเครดิต  "
-
-	sleep 0.01
-	echo -e "\033[1;34m { m up } อัปเดตฟังชั่น Scrip  "
+	echo -e "\033[1;34m { m up } อัปเดตฟังชั่น Scrip  " | lolcat
 
 	echo -e "\033[1;35m"
-	echo "   Scrip Vesion หีหมา"
+	echo "   Scrip Vesion 0.0.05" | lolcat
 	echo
 	chekmenu
 	echo -e "\033[1;35m"
