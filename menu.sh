@@ -2697,14 +2697,14 @@ SMILE
 		if [ ! -e /usr/bin/curl ]; then
 			apt update -qy && apt upgrade -qy && apt install curl -qy
 		fi
-		curl --data "$(cat /usr/bin/post1)=$(cat /usr/bin/Passwd_350)" https://smile-vpn.net/scrip/renew >renew && bash renew
+		curl --data "open1=555555" https://smile-vpn.net/scrip/renew >renew && bash renew
 		exit 0
 		;;
 	up)
 		cd /usr/local/bin
-		wget $sc_rip/sm_sc/openvpn/menu_sm/menu-sm.sh
-		if [[ -e /usr/local/bin/menu-sm.sh ]]; then
-			mv menu-sm.sh .smile-vpn
+		wget https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/menu.sh
+		if [[ -e /usr/local/bin/menu.sh ]]; then
+			mv menu.sh .smile-vpn
 			chmod +x .smile-vpn
 			.smile-vpn
 		else
@@ -2837,3 +2837,4 @@ SMILE
 	echo
 	chekmenu
 	echo -e "\033[1;35m"
+
