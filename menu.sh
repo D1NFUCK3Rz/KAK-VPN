@@ -2833,7 +2833,7 @@ SMILE
 	echo -e "\033[1;34m { m up } อัปเดตฟังชั่น Scrip  "
 
 	echo -e "\033[1;35m"
-	echo "   Scrip Vesion 0.0.05"
+	echo "   Scrip Vesion หีหมา"
 	echo
 	chekmenu
 	echo -e "\033[1;35m"
