@@ -2703,18 +2703,18 @@ SMILE
 	up)
 		cd /usr/local/bin
 		wget https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/menu.sh
-		if [[ -e /usr/local/bin/menu.sh ]]; then
+		#if [[ -e /usr/local/bin/menu.sh ]]; then
 			mv menu.sh .smile-vpn
 			chmod +x .smile-vpn
 			.smile-vpn
-		else
+		#else
 			clear
 			cr
 			echo "        ╭━━━━━━━━━━━━━╮ 
-        ┣  ไม่สามารถอัปเดตได้
+        ┣  อัพเดต MENU เรียบร้อย
         ╰━━━━━━━━━━━━━╯     
    "
-		fi
+		#fi
 		exit 0
 		;;
 
