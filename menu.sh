@@ -2736,6 +2736,7 @@ SMILE
 				iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j SNAT --to-source $SERVER_IP
 				iptables -t nat -A POSTROUTING -s 10.8.1.0/24 -j SNAT --to-source $SERVER_IP
 				iptables-save > /etc/iptables.conf
+				ufw reload
 				fi
 				echo " "
 				
@@ -2864,8 +2865,10 @@ SMILE
 	
 	echo -e "\033[1;34m { m up } อัปเดตฟังชั่น Scrip  "
 
+	echo -e "\033[1;33m { m unlock } เปิดใช้งาน OpenVPN เชื่อมต่อไม่จำกัด  "
+	
 	echo -e "\033[1;35m"
-	echo "   Scrip Vesion 0.0.05"
+	echo "   Scrip Vesion หีหมา"
 	echo
 	chekmenu
 	echo -e "\033[1;35m"
