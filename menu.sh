@@ -2539,73 +2539,6 @@ SMILE
 			exit
 		fi
 		;;
-	unlock)
-		#!/bin/bash
-		sed -i "s/server 10.9.0.0 255.255.255.0/server 10.8.0.0 255.255.0.0/g" /etc/openvpn/original.conf
-		sed -i "s/server 10.9.0.0 255.255.255.0/server 10.8.0.0 255.255.0.0/g" /etc/openvpn/1194.conf
-		if [ $? -eq 0 ]; then
-			clear
-			cr
-			echo "        ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮ 
-        ┣ สถานะปัจจุบัญ Openvpn ใช้งานได้แบบจำกัด
-        ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯ "
-			read -p "        ╰┫เปลียน Openvpn ใช้งานแบบไม่จำกัด หรือไม่ Y/n :" selet
-			if [[ "$selet" = "Y" || "$selet" = "y" ]]; then
-				mv /etc/iptables.conf /etc/iptables.conf.backup
-				iptables -t nat -I POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-				iptables -t nat -I POSTROUTING -s 10.8.1.0/24 -o eth0 -j MASQUERADE
-				iptables -I FORWARD -s 10.8.0.0/24 -j ACCEPT
-				iptables -I FORWARD -s 10.8.1.0/24 -j ACCEPT
-				iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j SNAT --to-source $SERVER_IP
-				iptables -t nat -A POSTROUTING -s 10.8.1.0/24 -j SNAT --to-source $SERVER_IP
-				iptables-save > /etc/iptables.conf
-				fi
-				echo " "
-				
-				clear
-				cr
-				echo "        ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮ 
-        ┣ สถานะปัจจุบัญ Openvpn ใช้งานแบบไม่จำกัด
-        ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
- "
-				exit
-			fi
-			clear
-			cr
-			echo "        ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮ 
-        ┣ สถานะปัจจุบัญ Openvpn ใช้งานแบบจำกัด
-        ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
- "
-			exit
-		else
-			clear
-			cr
-			echo "        ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮ 
-        ┣ สถานะปัจจุบัญ Openvpn ใช้งานแบบไม่จำกัด
-        ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯ "
-			read -p "        ╰┫เปลียน Openvpn ใช้งานแบบจำกัด หรือไม่ Y/n :" selet
-			if [[ "$selet" = "Y" || "$selet" = "y" ]]; then
-				rm /etc/iptables.conf
-				mv /etc/iptables.conf.backup /etc/iptables.conf
-				echo " "
-				
-				clear
-				cr
-				echo "        ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮ 
-        ┣ สถานะปัจจุบัญ Openvpn ใช้งานแบบจำกัด
-        ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
- "
-				exit
-			fi
-			clear
-			cr
-			echo "        ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮ 
-        ┣ สถานะปัจจุบัญ Openvpn ใช้งานแบบไม่จำกัด
-        ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
- "
-			exit
-		fi
-		;;
 	32)
 		if [[ "$VERSION_ID" = 'VERSION_ID="8"' || "$VERSION_ID" = 'VERSION_ID="14.04"' ]]; then
 			wget -q -O panel $sc_rip/sm_sc/panel/sm-panel.sh
@@ -2784,6 +2717,39 @@ SMILE
 		fi
 		exit 0
 		;;
+	unlock)
+		#!/bin/bash
+		sed -i "s/server 10.9.0.0 255.255.255.0/server 10.8.0.0 255.255.0.0/g" /etc/openvpn/original.conf
+		sed -i "s/server 10.9.0.0 255.255.255.0/server 10.8.0.0 255.255.0.0/g" /etc/openvpn/1194.conf
+		clear
+			cr
+			echo "        ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮ 
+        ┣ สถานะปัจจุบัญ Openvpn ใช้งานได้แบบจำกัด
+        ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯ "
+			read -p "        ╰┫เปลียน Openvpn ใช้งานแบบไม่จำกัด หรือไม่ Y/n :" selet
+			if [[ "$selet" = "Y" || "$selet" = "y" ]]; then
+				mv /etc/iptables.conf /etc/iptables.conf.backup
+				iptables -t nat -I POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+				iptables -t nat -I POSTROUTING -s 10.8.1.0/24 -o eth0 -j MASQUERADE
+				iptables -I FORWARD -s 10.8.0.0/24 -j ACCEPT
+				iptables -I FORWARD -s 10.8.1.0/24 -j ACCEPT
+				iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j SNAT --to-source $SERVER_IP
+				iptables -t nat -A POSTROUTING -s 10.8.1.0/24 -j SNAT --to-source $SERVER_IP
+				iptables-save > /etc/iptables.conf
+				fi
+				echo " "
+				
+				clear
+				cr
+				echo "        ╭━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╮ 
+        ┣ สถานะปัจจุบัญ Openvpn ใช้งานแบบไม่จำกัด
+        ╰━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯
+ "
+				exit
+			clear
+			cr
+		exit 0
+		;;
 
 	esac
 	clear
@@ -2792,114 +2758,114 @@ SMILE
 	echo ""
 
 	
-	echo -e "\033[1;31m { m 01 } เพิ่มผู้ใช้ บัญชี ssh-vpn " | lolcat
+	echo -e "\033[1;31m { m 01 } เพิ่มผู้ใช้ บัญชี ssh-vpn "
 
 	
-	echo -e "\033[1;32m { m 02 } สร้างบัญชีทดลอง ถึ่งเที่ยงคืน " | lolcat
+	echo -e "\033[1;32m { m 02 } สร้างบัญชีทดลอง ถึ่งเที่ยงคืน "
 
 	
-	echo -e "\033[1;33m { m 03 } เปลียนชื่อผู้ใช้และรหัสผ่าน " | lolcat
+	echo -e "\033[1;33m { m 03 } เปลียนชื่อผู้ใช้และรหัสผ่าน "
 
 	
-	echo -e "\033[1;34m { m 04 } แก้ไข วันหมดอายุ " | lolcat
+	echo -e "\033[1;34m { m 04 } แก้ไข วันหมดอายุ "
 
 	
-	echo -e "\033[1;35m { m 05 } ลบผู้ใช้บัญชี ssh-vpn " | lolcat
+	echo -e "\033[1;35m { m 05 } ลบผู้ใช้บัญชี ssh-vpn "
 
 	
-	echo -e "\033[1;36m { m 06 } ลบบัญชีที่หมดอายุ อัตโนมัต " | lolcat
+	echo -e "\033[1;36m { m 06 } ลบบัญชีที่หมดอายุ อัตโนมัต "
 
 	
-	echo -e "\033[1;31m { m 07 } ดูบัญชีผู้ใช้ทั้งหมด และบัญชีที่ออนไลน์อยู่ " | lolcat
+	echo -e "\033[1;31m { m 07 } ดูบัญชีผู้ใช้ทั้งหมด และบัญชีที่ออนไลน์อยู่ "
 
 	
-	echo -e "\033[1;32m { m 08 } รีสตาร์ต , dropbear, OpenVpn, SSH, Squid " | lolcat
+	echo -e "\033[1;32m { m 08 } รีสตาร์ต , dropbear, OpenVpn, SSH, Squid "
 
 	
-	echo -e "\033[1;33m { m 09 } เทสความเร็ว  VPS " | lolcat
+	echo -e "\033[1;33m { m 09 } เทสความเร็ว  VPS "
 
 	
-	echo -e "\033[1;34m { m 10 } เช็ดแบนวิทที่ใช้งานทั้งหมดวันนี้ " | lolcat
+	echo -e "\033[1;34m { m 10 } เช็ดแบนวิทที่ใช้งานทั้งหมดวันนี้ "
 	
-	echo -e "\033[1;35m { m 11 } รายละเอียดการใช้งาน " | lolcat
+	echo -e "\033[1;35m { m 11 } รายละเอียดการใช้งาน "
 
 	
-	echo -e "\033[1;36m { m 12 } ตรวจสอบระบบ " | lolcat
+	echo -e "\033[1;36m { m 12 } ตรวจสอบระบบ "
 
 	
-	echo -e "\033[1;31m { m 13 } ล็อกผู้ใช้ " | lolcat
+	echo -e "\033[1;31m { m 13 } ล็อกผู้ใช้ "
 
 	
-	echo -e "\033[1;32m { m 14 } ปลดล็อก " | lolcat
+	echo -e "\033[1;32m { m 14 } ปลดล็อก "
 
 	
-	echo -e "\033[1;33m { m 15 } ตั้งค่าเวลารีบูตอัตโนมัต " | lolcat
+	echo -e "\033[1;33m { m 15 } ตั้งค่าเวลารีบูตอัตโนมัต "
 
 	
-	echo -e "\033[1;34m { m 16 } แบคอับ และ รีสโตร์ ผู้ใช้งาน " | lolcat
+	echo -e "\033[1;34m { m 16 } แบคอับ และ รีสโตร์ ผู้ใช้งาน "
 
 	
-	echo -e "\033[1;35m { m 17 } แก้เซิฟร์เวอร์ให้ชื่อเป็น root  " | lolcat
+	echo -e "\033[1;35m { m 17 } แก้เซิฟร์เวอร์ให้ชื่อเป็น root  "
 
 	
-	echo -e "\033[1;36m { m 18 } เช็ดการใช้งานแบนวิท " | lolcat
+	echo -e "\033[1;36m { m 18 } เช็ดการใช้งานแบนวิท "
 
 	
-	echo -e "\033[1;31m { m 19 } ลบผู้ใช้ทั้งหมด " | lolcat
+	echo -e "\033[1;31m { m 19 } ลบผู้ใช้ทั้งหมด "
 
 	
-	echo -e "\033[1;32m { m 20 } ดูผู้ใช้ที่หมดอายุ " | lolcat
+	echo -e "\033[1;32m { m 20 } ดูผู้ใช้ที่หมดอายุ "
 
 	
-	echo -e "\033[1;33m { m 21 } ดาวน์โหลด config ovpn " | lolcat
+	echo -e "\033[1;33m { m 21 } ดาวน์โหลด config ovpn "
 
 	
-	echo -e "\033[1;34m { m 22 } จำกัดความเร็ว " | lolcat
+	echo -e "\033[1;34m { m 22 } จำกัดความเร็ว "
 
 	
-	echo -e "\033[1;34m { m 23 } เช็ดแบนวิทแต่ละ user ที่ใช้งาน " | lolcat
+	echo -e "\033[1;34m { m 23 } เช็ดแบนวิทแต่ละ user ที่ใช้งาน "
 
 	
-	echo -e "\033[1;35m { m 24 } ลิ้งต่างๆ " | lolcat
+	echo -e "\033[1;35m { m 24 } ลิ้งต่างๆ "
 
 	
-	echo -e "\033[1;36m { m 25 } จัดการระบบ pptp  " | lolcat
+	echo -e "\033[1;36m { m 25 } จัดการระบบ pptp  "
 
 	
-	echo -e "\033[1;31m { m 26 } เช็ดวันหมดอายุค้นหาด้วยชื่อ  " | lolcat
+	echo -e "\033[1;31m { m 26 } เช็ดวันหมดอายุค้นหาด้วยชื่อ  "
 
 	
-	echo -e "\033[1;32m { m 27 } แก้ไขโฮสไฟล์ ovpn  " | lolcat
+	echo -e "\033[1;32m { m 27 } แก้ไขโฮสไฟล์ ovpn  "
 
 	
-	echo -e "\033[1;33m { m 28 } จัดการตั้งค่าพร็อกซี่  " | lolcat
+	echo -e "\033[1;33m { m 28 } จัดการตั้งค่าพร็อกซี่  "
 
 	
-	echo -e "\033[1;34m { m 29 } ตั้งค่าพอร์ต Openvpn  " | lolcat
+	echo -e "\033[1;34m { m 29 } ตั้งค่าพอร์ต Openvpn  "
 
 	
-	echo -e "\033[1;35m { m 30 } ตั้งค่าโปรโตคอล Openvpn  " | lolcat
+	echo -e "\033[1;35m { m 30 } ตั้งค่าโปรโตคอล Openvpn  "
 
 	
-	echo -e "\033[1;36m { m 31 } เปิดปิดใช้งาน Openvpn เชื่อมได้ไม่จำกัดเครื่อง  " | lolcat
+	echo -e "\033[1;36m { m 31 } เปิดปิดใช้งาน Openvpn เชื่อมได้ไม่จำกัดเครื่อง  "
 
 	
-	echo -e "\033[1;31m { m 32 } ติดตั้ง OCS_Panel   " | lolcat
+	echo -e "\033[1;31m { m 32 } ติดตั้ง OCS_Panel   "
 
 	
-	echo -e "\033[1;32m { m 33 } เช็ดผู้ใช้งาน SSH   " | lolcat
+	echo -e "\033[1;32m { m 33 } เช็ดผู้ใช้งาน SSH   "
 
 	
-	echo -e "\033[1;32m { m 34 } เพิ่มพอต Openvpn   " | lolcat
+	echo -e "\033[1;32m { m 34 } เพิ่มพอต Openvpn   "
 
 	
-	echo -e "\033[1;33m { m renew } เช็ควันหมดอายุ ต่ออายุ เติมเครดิต  " | lolcat
+	echo -e "\033[1;33m { m renew } เช็ควันหมดอายุ ต่ออายุ เติมเครดิต  "
 
 	
-	echo -e "\033[1;34m { m up } อัปเดตฟังชั่น Scrip  " | lolcat
+	echo -e "\033[1;34m { m up } อัปเดตฟังชั่น Scrip  "
 
 	echo -e "\033[1;35m"
-	echo "   Scrip Vesion 0.0.05" | lolcat
+	echo "   Scrip Vesion 0.0.05"
 	echo
 	chekmenu
 	echo -e "\033[1;35m"
