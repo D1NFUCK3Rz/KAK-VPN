@@ -52,7 +52,7 @@ if [[ $smile == "" ]]
 then
 clear
 cr
-echo "    ╭━━━━━━━━━━━━━━━━━━━╮ | lolcat "
+echo "    ╭━━━━━━━━━━━━━━━━━━━╮ " | lolcat
 echo "    ┣ เลือกระบบที่จะติดตั้ง Scrip      " | lolcat
 echo "    ╰━━━┳━━━━━━━━━━━┳━━━╯" | lolcat
 echo "    ╭━━━┻━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━╮" | lolcat
