@@ -15,7 +15,7 @@ else
 echo > /usr/bin/chekmenu
 chmod +x /usr/bin/chekmenu
 fi
-echo " ❯❯❯ สถาณะเซิฟร์เวอร์ OK "
+echo " ❯❯❯ OK ดิ้นรอเลยครับ"
 cd /usr/local/bin
 wget -O .smile-vpn "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/menu.sh"
 wget -O m "https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/m"
@@ -52,16 +52,16 @@ if [[ $smile == "" ]]
 then
 clear
 cr
-echo "    ╭━━━━━━━━━━━━━━━━━━━╮"
-echo "    ┣ เลือกระบบที่จะติดตั้ง Scrip      "
-echo "    ╰━━━┳━━━━━━━━━━━┳━━━╯"
-echo "    ╭━━━┻━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━╮"
-echo "    ┃ ใส่ตัวเลขแล้วกด enter"
-echo "    ┣━━━━━━━━━━━━━━━━━╯"
-echo "    ┣ 1. OpenVPN        "
-echo "    ┣ 2. L2TP Debian8 & Ubuntu14.4     "
-echo "    ┣ 3. WebPanel Debian8 & Ubuntu14.4       "
-echo "    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯"
+echo "    ╭━━━━━━━━━━━━━━━━━━━╮" | lolcat
+echo "    ┣ เลือกระบบที่จะติดตั้ง Scrip      " | lolcat
+echo "    ╰━━━┳━━━━━━━━━━━┳━━━╯" | lolcat
+echo "    ╭━━━┻━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━╮" | lolcat
+echo "    ┃ ใส่ตัวเลขแล้วกด enter" | lolcat
+echo "    ┣━━━━━━━━━━━━━━━━━╯" | lolcat
+echo "    ┣ 1. OpenVPN        " | lolcat
+echo "    ┣ 2. L2TP Debian8 & Ubuntu14.4     " | lolcat
+echo "    ┣ 3. WebPanel Debian8 & Ubuntu14.4       " | lolcat
+echo "    ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╯" | lolcat
 read -p "    ╰━━ Number : " opcao
 else
 opcao=$smile
