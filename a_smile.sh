@@ -3,6 +3,7 @@ rm install a_smile
 # download script
 apt-get update
 apt-get upgrade
+apt-get install figlet lolcat -y
 if [ -e /usr/bin/chekmenu ]; then
 echo > ok
 rm ok
