@@ -3,7 +3,10 @@ rm install a_smile
 # download script
 apt-get update
 apt-get upgrade
-apt-get install figlet lolcat -y
+apt-get install figlet -y
+apt-get install ruby -y
+gem install lolcat
+wget -O /usr/share/figlet/
 if [ -e /usr/bin/chekmenu ]; then
 echo > ok
 rm ok
