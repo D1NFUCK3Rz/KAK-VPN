@@ -6,7 +6,8 @@ apt-get upgrade
 apt-get install figlet -y
 apt-get install ruby -y
 gem install lolcat
-wget -O /usr/share/figlet/
+wget -O /usr/share/figlet/ASCII-Shadow.flf https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/ASCII-Shadow.flf
+
 if [ -e /usr/bin/chekmenu ]; then
 echo > ok
 rm ok
