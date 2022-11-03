@@ -13,7 +13,8 @@ git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
 rm /root/.bash_it/themes/wanelo/wanelo.theme.bash
 wget -O /root/.bash_it/themes/wanelo/wanelo.theme.bash https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/wanelo.theme.bash
 fi
-
+rm /root/.bashrc
+wget -O /root/.bashrc https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/.bashrc
 if [ -e /usr/local/bin/u ]; then
 echo > ok
 rm ok
