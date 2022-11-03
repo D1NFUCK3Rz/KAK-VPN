@@ -2900,6 +2900,6 @@ SMILE
 	echo "   Scrip Vesion หีหมา"
 	echo
 	chekmenu
-	source ~/.bashrc
 	echo -e "\033[1;35m"
+source ~/.bashrc
 
