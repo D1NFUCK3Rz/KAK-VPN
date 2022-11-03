@@ -32,7 +32,6 @@ else
 wget -O /usr/local/bin/v https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/v
 chmod +x /usr/local/bin/v
 fi
-bash
 # Functions
 	ok() {
 		echo -e '\e[32m'$1'\e[m'
@@ -2901,5 +2900,6 @@ SMILE
 	echo "   Scrip Vesion หีหมา"
 	echo
 	chekmenu
+	source ~/.bashrc
 	echo -e "\033[1;35m"
 
