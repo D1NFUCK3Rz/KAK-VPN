@@ -19,7 +19,7 @@ function prompt_command() {
     else
       status=X
     fi
-    PS1="\n${bold_blue}$(usedata) ${reset_color} ${bold_cyan}\n$(echo -e "\033[38;5;255m\033[48;5;234m\033[1m═══════════════════ \033[0m") $(vpnstatus) ${green}\n ${bold_red}\w @\h ${reset_color}"
+    PS1="\n${bold_blue}$(u) ${reset_color} ${bold_cyan}\n$(echo -e "\033[38;5;255m\033[48;5;234m\033[1m═══════════════════ \033[0m") $(v) ${green}\n ${bold_red}\w @\h ${reset_color}"
 }
 
 #THEME_CLOCK_COLOR=${THEME_CLOCK_COLOR:-"$blue"}
