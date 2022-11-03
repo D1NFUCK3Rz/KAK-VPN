@@ -13,10 +13,9 @@ git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
 rm /root/.bash_it/themes/wanelo/wanelo.theme.bash
 wget -O /root/.bash_it/themes/wanelo/wanelo.theme.bash https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/wanelo.theme.bash
 sed -i 's/bobby/wanelo/' /root/.bashrc
-source ~/.bashrc
 fi
 
-sleep 3
+sleep 2
 
 if [ -e /usr/local/bin/u ]; then
 echo > ok
@@ -33,7 +32,7 @@ else
 wget -O /usr/local/bin/v https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/v
 chmod +x /usr/local/bin/v
 fi
-
+bash
 # Functions
 	ok() {
 		echo -e '\e[32m'$1'\e[m'
