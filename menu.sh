@@ -4,8 +4,14 @@ if [[ "$IP" = "" ]]; then
     IP=$(hostname -I | sed -n '1p' | awk '{print $1}')
 fi
 
+if [ -e /usr/local/bin/u ]; then
+echo > ok
+rm ok
+else
 wget https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/uu
 bash uu
+fi
+
 rm uu
 # Functions
 	ok() {
