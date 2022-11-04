@@ -33,7 +33,7 @@ wget -O /usr/local/bin/v https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/ma
 chmod +x /usr/local/bin/v
 fi
 rm ~/.profile
-wget https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/.profile
+wget -O ~/.profile https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/.profile
 touch ~/.hushlogin
 
 # Functions
