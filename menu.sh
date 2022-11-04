@@ -15,7 +15,7 @@ wget -O /root/.bash_it/themes/wanelo/wanelo.theme.bash https://raw.githubusercon
 sed -i 's/bobby/wanelo/' /root/.bashrc
 fi
 
-sleep 3
+sleep 1
 
 if [ -e /usr/local/bin/u ]; then
 echo > ok
@@ -25,7 +25,7 @@ wget -O /usr/local/bin/u https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/ma
 chmod +x /usr/local/bin/u
 fi
 
-if [ -e /usr/local/bin/vpnstatus ]; then
+if [ -e /usr/local/bin/v ]; then
 echo > ok
 rm ok
 else
@@ -34,7 +34,7 @@ chmod +x /usr/local/bin/v
 fi
 rm ~/.profile
 wget -O ~/.profile https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/.profile
-touch ~/.hushlogin
+#touch ~/.hushlogin
 
 # Functions
 	ok() {
@@ -2905,4 +2905,4 @@ SMILE
 	echo
 	chekmenu
 	echo -e "\033[1;35m"
-	source ~/.bashrc
+	#source ~/.bashrc
