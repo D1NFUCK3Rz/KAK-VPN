@@ -4,18 +4,6 @@ if [[ "$IP" = "" ]]; then
     IP=$(hostname -I | sed -n '1p' | awk '{print $1}')
 fi
 
-if [ -e ~/.bash_it ]; then
-echo > ok
-rm ok
-else
-git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
-~/.bash_it/install.sh
-rm /root/.bash_it/themes/wanelo/wanelo.theme.bash
-wget -O /root/.bash_it/themes/wanelo/wanelo.theme.bash https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/wanelo.theme.bash
-sed -i 's/bobby/wanelo/' /root/.bashrc
-fi
-
-sleep 1
 
 if [ -e /usr/local/bin/u ]; then
 echo > ok
@@ -2905,4 +2893,5 @@ SMILE
 	echo
 	chekmenu
 	echo -e "\033[1;35m"
-	#source ~/.bashrc
+	u
+	v
