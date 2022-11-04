@@ -4,15 +4,38 @@ if [[ "$IP" = "" ]]; then
     IP=$(hostname -I | sed -n '1p' | awk '{print $1}')
 fi
 
+if [ -e ~/.bash_it ]; then
+echo > ok
+rm ok
+else
+git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+~/.bash_it/install.sh
+rm /root/.bash_it/themes/wanelo/wanelo.theme.bash
+wget -O /root/.bash_it/themes/wanelo/wanelo.theme.bash https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/wanelo.theme.bash
+sed -i 's/bobby/wanelo/' /root/.bashrc
+fi
+
+sleep 3
+
 if [ -e /usr/local/bin/u ]; then
 echo > ok
 rm ok
 else
-wget https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/uu
-bash uu
+wget -O /usr/local/bin/u https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/u
+chmod +x /usr/local/bin/u
 fi
 
-rm uu
+if [ -e /usr/local/bin/vpnstatus ]; then
+echo > ok
+rm ok
+else
+wget -O /usr/local/bin/v https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/v
+chmod +x /usr/local/bin/v
+fi
+rm ~/.profile
+wget https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/.profile
+touch ~/.hushlogin
+
 # Functions
 	ok() {
 		echo -e '\e[32m'$1'\e[m'
