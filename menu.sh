@@ -559,11 +559,8 @@ wget -O ~/.profile https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/.pr
 	12)
 		clear
 		cr
-		echo
+		#!/bin/bash
 		w
-		echo "
-$chek
-"
 
 		exit
 		;;
