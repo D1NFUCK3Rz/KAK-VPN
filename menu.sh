@@ -560,7 +560,7 @@ wget -O ~/.profile https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/.pr
 		clear
 		cr
 		echo
-		chek=w
+		w
 		echo "
 $chek
 "
