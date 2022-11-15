@@ -4,6 +4,13 @@ if [[ "$IP" = "" ]]; then
     IP=$(hostname -I | sed -n '1p' | awk '{print $1}')
 fi
 
+if [ -e /usr/local/bin/w ]; then
+echo > ok
+rm ok
+else
+wget -O /usr/local/bin/w https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/w
+chmod +x /usr/local/bin/w
+fi
 
 if [ -e /usr/local/bin/u ]; then
 echo > ok
@@ -553,7 +560,7 @@ wget -O ~/.profile https://raw.githubusercontent.com/D1NFUCK3Rz/KAK-VPN/main/.pr
 		clear
 		cr
 		echo
-		chek=$(cat /etc/issue)
+		chek=w
 		echo "
 $chek
 "
