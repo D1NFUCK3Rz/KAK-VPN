@@ -138,7 +138,7 @@ auth-user-pass
 client
 dev tun
 proto tcp
-port 1194
+port 443
 connect-retry 1
 connect-timeout 120
 
